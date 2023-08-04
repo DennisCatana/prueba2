@@ -25,7 +25,7 @@ public class datos {
     static final String QUERY="Select * From datos ;";
     private boolean data = false;
 
-    //Datos que se necesitan para la comprobar
+    //Datos que se necesitan para la comprobar d
     public static String nomx;
     public static String fechx;
     public static String sigx;
