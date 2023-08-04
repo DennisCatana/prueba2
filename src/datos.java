@@ -190,7 +190,6 @@ public class datos {
             throw new RuntimeException(el);
         }
     }
-
     public static void actualizar(String clave){
         String query2 = "UPDATE datos set Clave = '"+1234+"'"+ "where Nombre="+'"'+ "Dennis" +'"' ;
         //System.out.println(query2);
