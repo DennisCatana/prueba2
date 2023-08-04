@@ -162,8 +162,6 @@ public class datos {
             }
         });
     }
-
-
     public static void eliminar(int cod){
         String query2 = "DELETE FROM datos where codigo = '"+ cod +"'";
         try(
