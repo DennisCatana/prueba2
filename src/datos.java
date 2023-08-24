@@ -48,14 +48,19 @@ public class datos {
                 int cedx = Integer.parseInt(cedula.getText());
                 nomx =nombre.getText().trim();
                 fechx = fecha.getText().trim();
-                sigx = String.valueOf(sig.getNextFocusableComponent());
+                sigx = (String) sig.getSelectedItem();
                 ingresar(codx,cedx,nomx,fechx,sigx);
             }
         });
         actualizarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                int codx = Integer.parseInt(codigo.getText());
+                int cedx = Integer.parseInt(cedula.getText());
+                nomx=nombre.getText().trim();
+                fechx=fecha.getText().trim();
+                sigx =(String) sig.getSelectedItem();
+                actualizar(codx,cedx,nomx,fechx,sigx);
             }
         });
         limpiarFormularioButton.addActionListener(new ActionListener() {
@@ -190,15 +195,15 @@ public class datos {
             throw new RuntimeException(el);
         }
     }
-    public static void actualizar(String clave){
-        String query2 = "UPDATE datos set Clave = '"+1234+"'"+ "where Nombre="+'"'+ "Dennis" +'"' ;
-        //System.out.println(query2);
+    public static void actualizar(int cod, int ced, String nom, String fech,String signo){
+        String query4 = "UPDATE datos SET cedula = '" + ced + "', Nombre = '" + nom + "', FechaN = '" + fech + "', Signo = '" + signo + "' WHERE codigo = '" + cod + "'";
         try(
                 Connection conn = DriverManager.getConnection(DB_URL,USER,PASS); //Esencial para la conección
                 Statement stmt= conn.createStatement();
         ){
-            stmt.executeUpdate(query2);
-            System.out.println("Usuario Actualizado xd");
+            stmt.executeUpdate(query4);
+            System.out.println("----------------------------------------------");
+            System.out.println("Usuario Actualizado");
             System.out.println("----------------------------------------------");
         }catch (Exception el){
             throw new RuntimeException(el);
@@ -221,6 +226,8 @@ public class datos {
         frame.setContentPane(new datos().datos);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setSize(750, 500);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }
